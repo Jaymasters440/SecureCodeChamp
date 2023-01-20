@@ -6,42 +6,41 @@ function generatePassword(){
   var lowercaseLetters=confirm("Do you want lowercase letters?");
   var upppercaseLetters=confirm("Do you want uppercase letters?");
   var symbols=confirm("Do you want symbols?");
-  var characters=confirm("Do you want characters?");
-  console.log(length)
-  console.log(numbers)
+  var password="";
+  console.log(length);
+  console.log(numbers);
   console.log(lowercaseLetters);
   console.log(upppercaseLetters);
   console.log(symbols);
-  var numbers=[1,2,3,4,5,7,8,9,0]
-  var symbols=["@","#","!","$","%","&","*"]
-  var characterCodes = Array.from(Array(26)).map( (_, i) => i = 97);
-  var lowercaseLetters = characterCodes.map(code = String.fromCharCode(code));
-  var upppercaseLetters = lowercaseLetters.map(letter => letter.toUpperCase());
+  var numbers=[1,2,3,4,5,7,8,9,0];
+  var symbols=["@","#","!","$","%","&","*"];
+  var lowercase=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  var uppercase=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
   console.log(lowercaseLetters);
   console.log(upppercaseLetters);
   console.log(symbols);
-  
-  // password generator
-  var generatePassword = (length, hasNumbers, hasSymbols, hasLowercase, hasUppercase) =>{
-    var availableCharacters = [
-      ...(hasSymbols ? symbols ; []);
-      ...(hasNumbers ? numbers ; []);
-      ...(hasLowercase ? lowercaseLetters ; []);
-      ...(hasUppercase ? hasUppercase ; []);
-    ];
-    console.log(availableCharacters); 
+  console.log(numbers);
 
-    let password = "";
+  for (let index = 0; index < length; index++) {
+   if(upppercaseLetters && password.length<length){
+    password+=uppercase[Math.floor(Math.random()*uppercase.length)];
+   }
 
-    if(availableCharacters.length = < 8) return "";
-    if(availableCharacters.length = >128) return "";
+   if(lowercaseLetters && password.length<length){
+    password+=lowercase[Math.floor(Math.random()*lowercase.length)];}
+
+    if(numbers && password.length<length){
+      password+=numbers[Math.floor(Math.random()*numbers.length)];
+    }
+
+      if(symbols && password.length<length){
+        password+=symbols[Math.floor(Math.random()*symbols.length)];
+      }
     
-
   }
-    
   
-  
-  return "Fillin"
+    return password
 }
 // Write password to the #password input
 function writePassword() {
